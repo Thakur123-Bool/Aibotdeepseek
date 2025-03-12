@@ -1,12 +1,17 @@
-FROM python:3.9-alpine
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Set the working directory and copy files
+# Set the working directory in the container
 WORKDIR /app
+
+# Copy the current directory contents into the container at /app
 COPY . /app
 
-EXPOSE 80
+# Install any needed dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "app:app"]
+# Make port 8000 available to the world outside this container
+EXPOSE 8000
+
+# Run FastAPI with Uvicorn when the container launches
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,11 +1,13 @@
-# Python bytecode files
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Environment variables
+# Ignore environment variables
 .env
 
-# Virtual environment
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore virtual environment
 venv/
+
+# Ignore Koyeb configuration if not used in git
+Procfile

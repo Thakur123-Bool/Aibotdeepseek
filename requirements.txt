@@ -1,11 +1,5 @@
-fastapi==0.75.0
-uvicorn==0.17.0
-gunicorn==20.1.0
-python-dotenv==0.19.2
-requests==2.26.0
-PyPDF2==1.26.0
-huggingface-hub==0.13.2
-langchain==0.0.122
-transformers==4.18.0
-sentence-transformers==2.2.0
-faiss-cpu==1.7.2
+fastapi
+uvicorn
+requests
+python-dotenv
+PyPDF2
