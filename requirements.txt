@@ -1,6 +1,7 @@
 fastapi
 uvicorn
 requests
-python-dotenv
 PyPDF2
+python-dotenv
+gunicorn
 python-multipart
