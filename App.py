@@ -5,7 +5,7 @@ import re
 from io import BytesIO
 from typing import List
 from dotenv import load_dotenv
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI, UploadFile, File, HTTPException, Form
 from fastapi.responses import HTMLResponse
 from PyPDF2 import PdfReader
 
@@ -130,3 +130,8 @@ async def process_url(url: str):
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the DeepSeek-powered PDF Question Answering API"}
+
+# New endpoint to upload a file and description using Form data
+@app.post("/uploadfile/")
+async def create_upload_file(file: UploadFile = File(...), description: str = Form(...)):
+    return {"filename": file.filename, "description": description}
