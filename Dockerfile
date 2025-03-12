@@ -1,14 +1,16 @@
-# Use the official Python image from Docker Hub
-FROM python:3.9-slim
+# Use the official Python Alpine image (smaller base image)
+FROM python:3.9-alpine
 
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Install build dependencies and clean up cache to keep the image small
+RUN apk add --no-cache --virtual .build-deps gcc musl-dev libffi-dev \
+    && pip install --no-cache-dir -r requirements.txt \
+    && apk del .build-deps
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy the application files into the container
+COPY . /app
 
 # Expose the port the app runs on
 EXPOSE 8000
