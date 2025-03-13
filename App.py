@@ -1,6 +1,7 @@
 import os
 import logging
 import requests
+import requests
 import re
 from io import BytesIO
 from typing import List
@@ -22,9 +23,6 @@ DEEPSEEK_API_KEY = os.getenv("sk-053e67b2f237425ab79299424beff735")
 # Initialize FastAPI app
 app = FastAPI()
 
-
-# Mount the static directory to serve HTML, CSS, and JS files
-app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Global variable for storing DeepSeek embeddings and responses
 retrieval_qa_chain = None
